@@ -90,17 +90,6 @@ The software or website will be given as a service to various dieticians to trac
 #### 5) Reduced medical fees for diet plans :-- As a single dietician can handle various patients simultaneously, the cost of consulting a dietician also reduces gradually.
 
 
-## Challanges we ran into:
-
-
-#### 1) Poor classification due to less time for training model
-
-
-
-#### 2) Deployment issues due to lack of knowledge
-
-
-#### 3) Designing database schema before implementation.
 
 
 
