@@ -1,0 +1,91 @@
+{% extends "fitme/base.html" %} {% load static %} {% block content %}
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"
+></script>
+<link href="{% static 'fitme/css/consumed.css' %}" rel="stylesheet" />
+
+
+
+  
+<h2 id = "total" style="margin-top: 50px;">ppp</h2>
+{% with sum=0 %}  
+<table id="customers">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Calories</th>
+      <th>Carbohydrate</th>
+      <th>Fiber</th>
+      <th>Fats</th>
+    </tr>
+  </thead>
+
+  <tbody>
+     
+    
+    {% for food in foods %}
+
+    <tr>
+      <td>{{food.items.Name}}</td>
+      <td>{{food.Amount}}</td>
+      <td id = 'cal'>{{ food.items.Calories }}</td>
+      <td>{{ food.items.Carbohydrate }}</td>
+      <td>{{ food.items.Fiber }}</td>
+      <td>{{ food.items.Fats }}</td>
+    </tr>
+
+    {% with sum=sum|add:food.items.Calories %}
+
+    <script type="text/javascript" >
+     
+         if (total == undefined) {
+          var total = 0
+         }  
+      total = total + parseInt('{{sum}}');
+      
+      console.log(total)
+      document.getElementById("total").innerHTML = 'Total calories = ' + total;
+    </script>
+    
+    
+    {% endwith %}
+    {% endfor %}
+ 
+
+  </tbody>
+</table>
+
+
+{% endwith %}
+
+
+{% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+
+    
+
+{% endblock %}

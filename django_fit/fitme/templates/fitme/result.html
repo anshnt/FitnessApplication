@@ -1,0 +1,112 @@
+{% extends "fitme/base.html" %} 
+{% block content %}
+
+{% load static %}
+
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  
+}
+
+.main-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #009b4d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #004704;
+}
+</style>
+</head>
+
+<div class="main-container">
+<div class="card">
+  <div class="container">
+
+    <img src="../media/ml_pics/{{predict}}.jpeg" alt="abc" style="width:100%">
+
+
+    <h4><b>{{ predict }}</b></h4> 
+    
+{% if predict == 'egg_omlet' %}
+  <p>Carbohydrate: 42</p> 
+  <p>Fiber: 13</p> 
+  <p>Calories: 31</p> 
+  <p>Fats: 432</p> 
+    
+{% elif predict == 'egg_boiled' %}
+  <p>Carbohydrate: 3</p> 
+  <p>Fiber: 23</p> 
+  <p>Calories: 23</p> 
+  <p>Fats: 21</p> 
+    
+{% elif predict == 'chai' %}
+  <p>Carbohydrate: 3</p> 
+  <p>Fiber: 23</p> 
+  <p>Calories: 23</p> 
+  <p>Fats: 3</p> 
+
+{% elif predict == 'bread' %}
+  <p>Carbohydrate: 778</p> 
+  <p>Fiber: 7</p> 
+  <p>Calories: 27</p> 
+  <p>Fats: 7</p> 
+    
+{% elif predict == 'rice' %}
+  <p>Carbohydrate: 331</p> 
+  <p>Fiber: 23</p> 
+  <p>Calories: 12</p> 
+  <p>Fats: 21</p> 
+   
+{% endif %}
+
+
+  </div>
+</div>
+<form action = "http://localhost:8000/create/" method = "POST" style="margin-top: 150px; margin-left: 200px;">
+  {% csrf_token %}
+  <label for="items">Is the prediction correct: </label>
+  <br>
+  <input id="items" type="text" name="items" value='{{predict}}'>
+ <br>
+  <input type="submit" value="Yes" style= "border-radius: 15px; margin-top: 10px; color: white; padding: 10px 25px ; border: none;">
+</form>
+</div>
+
+
+{% endblock %}

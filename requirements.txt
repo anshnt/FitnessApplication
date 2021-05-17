@@ -1,0 +1,6 @@
+django
+gunicorn
+django-heroku
+tensorflow
+django_crispy_forms
+matplotlib
