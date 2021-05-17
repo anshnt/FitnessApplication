@@ -103,23 +103,16 @@ The software or website will be given as a service to various dieticians to trac
 #### 3) Designing database schema before implementation.
 
 
-## Screenshots
-<div display=table; clear=both class="row">
-<img src="final-pics/cbs-1.jpeg">
-<img src="final-pics/cbs-2.jpeg">
-<img src="final-pics/cbs-3.jpeg">
-<img src="final-pics/cbs-4.jpeg">
-<img src="final-pics/cbs-5.jpeg">
-<img src="final-pics/cbs-6.jpeg">
-<img src="final-pics/cbs-7.jpeg">
-
-</div>
 
 ### Made with love from:
 <br>
 
 Anchal 1811015
+
+
 Ansh 1811016
+
+
 Jigar 1811018
 
 
